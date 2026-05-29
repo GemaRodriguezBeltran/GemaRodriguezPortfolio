@@ -1,0 +1,1294 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gema Rodriguez Beltran — Strategic Marketing & Communication</title>
+<meta name="description" content="Portfolio of Gema Rodriguez Beltran, Master in Strategic Marketing & Communication at IE Business School. Digital strategy, brand management, and marketing analytics." />
+<meta name="author" content="Gema Rodriguez Beltran" />
+<meta property="og:title" content="Gema Rodriguez Beltran — Marketing & Communication" />
+<meta property="og:description" content="Master in Strategic Marketing & Communication at IE Business School. Open to internships and graduate roles." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231a1612'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia' font-size='34' font-weight='600' fill='%23f1ebe0'%3EG%3C/text%3E%3Ccircle cx='49' cy='17' r='4' fill='%238b2c2c'/%3E%3C/svg%3E">
+
+<style>
+  /* ============================================================
+     DESIGN TOKENS
+     ============================================================ */
+  :root{
+    --bg:        #f1ebe0;
+    --bg-soft:   #e9e0cf;
+    --bg-deep:   #1a1612;
+    --ink:       #1a1612;
+    --ink-2:     #4a4239;
+    --ink-3:     #8a7c6a;
+    --paper:     #fdfaf3;
+    --accent:    #8b2c2c;
+    --accent-2:  #b14a3a;
+    --line:      #d4c9b5;
+    --line-soft: #e3d9c5;
+
+    --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --sans:  "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+    --max: 1280px;
+    --pad: clamp(1.25rem, 4vw, 3.5rem);
+  }
+
+  /* ============================================================
+     RESET
+     ============================================================ */
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-weight:400;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;cursor:pointer;background:none;border:none;color:inherit}
+  ::selection{background:rgba(139,44,44,.18);color:var(--accent)}
+
+  /* ============================================================
+     CUSTOM CURSOR
+     ============================================================ */
+  .cursor-dot, .cursor-ring{
+    position:fixed; top:0; left:0; pointer-events:none; z-index:9999;
+    border-radius:50%; transition:transform .25s ease, opacity .25s ease, background .2s, border-color .2s;
+    transform:translate(-50%,-50%);
+    will-change:transform;
+  }
+  .cursor-dot{ width:6px; height:6px; background:var(--accent); }
+  .cursor-ring{ width:38px; height:38px; border:1px solid rgba(26,22,18,.35); mix-blend-mode:multiply; }
+  .cursor-ring.hover{ width:56px; height:56px; border-color:var(--accent); background:rgba(139,44,44,.06); }
+  @media (hover: none), (max-width: 900px){ .cursor-dot, .cursor-ring{display:none} }
+  @media (prefers-reduced-motion: reduce){ .cursor-dot, .cursor-ring{display:none} }
+
+  /* ============================================================
+     LAYOUT
+     ============================================================ */
+  .wrap{max-width:var(--max); margin-inline:auto; padding-inline:var(--pad)}
+  .section{padding-block:clamp(5rem, 10vw, 9rem); position:relative}
+  .grid{display:grid; gap:2rem}
+
+  /* ============================================================
+     NAV
+     ============================================================ */
+  .nav{
+    position:fixed; inset:0 0 auto 0; z-index:50;
+    transition:background .35s ease, backdrop-filter .35s ease, border-color .35s ease;
+    border-bottom:1px solid transparent;
+  }
+  .nav.is-scrolled{
+    background:rgba(241,235,224,.82);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-bottom-color: var(--line-soft);
+  }
+  .nav__inner{
+    display:flex; align-items:center; justify-content:space-between;
+    height:74px;
+  }
+  .brand{
+    display:flex; align-items:center; gap:.7rem;
+    font-family:var(--serif); font-size:1.35rem; font-weight:600; letter-spacing:-.01em;
+  }
+  .brand__mark{
+    width:38px; height:38px; border-radius:50%;
+    background:var(--bg-deep); color:var(--bg);
+    display:grid; place-items:center;
+    font-family:var(--serif); font-size:1rem; font-weight:600;
+    position:relative;
+  }
+  .brand__mark::after{
+    content:''; position:absolute; top:4px; right:4px;
+    width:7px; height:7px; border-radius:50%; background:var(--accent);
+  }
+  .nav__links{ display:flex; gap:2rem; list-style:none; }
+  .nav__links a{
+    font-size:.78rem; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--ink-2); transition:color .25s; position:relative; padding:.25rem 0;
+  }
+  .nav__links a::after{
+    content:''; position:absolute; left:0; right:0; bottom:-2px;
+    height:1px; background:var(--accent); transform:scaleX(0); transform-origin:left;
+    transition:transform .35s cubic-bezier(.65,.05,.36,1);
+  }
+  .nav__links a.active, .nav__links a:hover{ color:var(--ink); }
+  .nav__links a.active::after, .nav__links a:hover::after{ transform:scaleX(1); }
+  .nav__cta{
+    display:inline-flex; align-items:center; gap:.5rem;
+    font-size:.78rem; letter-spacing:.18em; text-transform:uppercase;
+    padding:.75rem 1.4rem; border:1px solid var(--ink); border-radius:999px;
+    transition:background .25s, color .25s, transform .25s;
+  }
+  .nav__cta:hover{ background:var(--ink); color:var(--bg); transform:translateY(-1px); }
+  .nav__burger{ display:none; padding:.4rem; }
+  .nav__burger span{ display:block; width:24px; height:1.5px; background:var(--ink); margin:5px 0; transition:.3s; }
+  @media (max-width: 900px){
+    .nav__links, .nav__cta{ display:none; }
+    .nav__burger{ display:block; }
+  }
+
+  /* Mobile drawer */
+  .drawer{
+    position:fixed; inset:0; z-index:60;
+    background:var(--bg-deep); color:var(--bg);
+    transform:translateY(-100%); transition:transform .55s cubic-bezier(.7,0,.2,1);
+    padding:var(--pad);
+    display:flex; flex-direction:column; justify-content:space-between;
+  }
+  .drawer.open{ transform:translateY(0); }
+  .drawer__top{ display:flex; justify-content:space-between; align-items:center; height:74px; }
+  .drawer__close{ font-size:1.4rem; padding:.5rem; }
+  .drawer ul{ list-style:none; display:flex; flex-direction:column; gap:1.2rem; margin-top:3rem; }
+  .drawer a{
+    font-family:var(--serif); font-size:clamp(2rem, 9vw, 3.5rem); font-weight:500;
+    letter-spacing:-.02em; line-height:1.1; color:var(--bg);
+    transition:color .25s, padding .3s;
+  }
+  .drawer a:hover{ color:var(--accent-2); padding-left:1rem; }
+  .drawer__foot{ font-size:.78rem; letter-spacing:.18em; text-transform:uppercase; color:rgba(241,235,224,.5); }
+
+  /* ============================================================
+     HERO
+     ============================================================ */
+  .hero{
+    min-height:100svh; display:flex; align-items:center;
+    padding-top:120px; padding-bottom:5rem;
+    position:relative; overflow:hidden;
+  }
+  .hero::before{
+    content:''; position:absolute; inset:0; pointer-events:none; z-index:0;
+    background:
+      radial-gradient(800px 500px at 85% 15%, rgba(139,44,44,.08), transparent 60%),
+      radial-gradient(700px 600px at 5% 95%, rgba(212,201,181,.5),  transparent 60%);
+  }
+  .hero__grid{
+    position:relative; z-index:1;
+    display:grid; grid-template-columns: 1fr; gap:3rem; align-items:end;
+  }
+  @media(min-width:980px){
+    .hero__grid{ grid-template-columns: 7fr 5fr; gap:5rem; }
+  }
+  .hero__eyebrow{
+    display:inline-flex; align-items:center; gap:.6rem;
+    font-size:.72rem; letter-spacing:.3em; text-transform:uppercase; color:var(--accent);
+    margin-bottom:2rem;
+  }
+  .hero__eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--accent); animation:pulse 2.4s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{opacity:1} 50%{opacity:.35} }
+
+  .hero__title{
+    font-family:var(--serif); font-weight:500;
+    font-size: clamp(3.2rem, 9vw, 7.5rem);
+    line-height: .95; letter-spacing: -.025em;
+    color:var(--ink);
+  }
+  .hero__title .word{ display:inline-block; overflow:hidden; vertical-align:baseline; }
+  .hero__title .word > span{ display:inline-block; transform:translateY(105%); transition:transform .9s cubic-bezier(.2,.7,.2,1); }
+  .hero.loaded .hero__title .word > span{ transform:translateY(0); }
+  .hero__title .word:nth-child(2) > span{ transition-delay:.1s; }
+  .hero__title .word:nth-child(3) > span{ transition-delay:.2s; }
+  .hero__title .word:nth-child(4) > span{ transition-delay:.3s; }
+  .hero__title .italic{ font-style:italic; color:var(--accent); }
+
+  .hero__rule{
+    margin-block:2.5rem 2rem;
+    height:1px; background:var(--line); width:60%;
+    transform-origin:left; transform:scaleX(0);
+    transition: transform 1s .5s cubic-bezier(.7,0,.3,1);
+  }
+  .hero.loaded .hero__rule{ transform:scaleX(1); }
+
+  .hero__lede{
+    font-family:var(--serif); font-style:italic;
+    font-size: clamp(1.15rem, 1.6vw, 1.5rem);
+    color:var(--ink-2); max-width:32rem; line-height:1.5;
+    opacity:0; transform:translateY(18px); transition:opacity .9s .7s, transform .9s .7s;
+  }
+  .hero.loaded .hero__lede{ opacity:1; transform:translateY(0); }
+
+  .hero__ctas{
+    margin-top:2.5rem; display:flex; flex-wrap:wrap; gap:.9rem;
+    opacity:0; transform:translateY(18px); transition:opacity .9s .85s, transform .9s .85s;
+  }
+  .hero.loaded .hero__ctas{ opacity:1; transform:translateY(0); }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:.65rem;
+    padding:1rem 1.6rem; border-radius:999px;
+    font-size:.82rem; letter-spacing:.16em; text-transform:uppercase; font-weight:500;
+    transition: transform .25s ease, background .25s, color .25s, border-color .25s, box-shadow .25s;
+    border:1px solid transparent;
+    will-change:transform;
+  }
+  .btn--primary{ background:var(--ink); color:var(--bg); }
+  .btn--primary:hover{ background:var(--accent); transform:translateY(-2px); box-shadow:0 12px 24px -12px rgba(139,44,44,.5); }
+  .btn--ghost{ border-color:var(--ink); color:var(--ink); }
+  .btn--ghost:hover{ background:var(--ink); color:var(--bg); transform:translateY(-2px); }
+  .btn--link{ padding:1rem .4rem; color:var(--ink-2); }
+  .btn--link:hover{ color:var(--accent); }
+  .btn .arrow{ transition:transform .3s; }
+  .btn:hover .arrow{ transform:translateX(4px); }
+
+  /* Hero side card */
+  .hero__side{
+    opacity:0; transform:translateY(24px);
+    transition: opacity 1s .6s, transform 1s .6s;
+  }
+  .hero.loaded .hero__side{ opacity:1; transform:translateY(0); }
+  .portrait{
+    position:relative; aspect-ratio: 4 / 5;
+    border-radius:1.5rem; overflow:hidden;
+    background: linear-gradient(160deg, #d4c9b5 0%, #b89e7e 100%);
+    box-shadow: 0 30px 60px -30px rgba(26,22,18,.35);
+  }
+  .portrait__letter{
+    position:absolute; inset:0; display:grid; place-items:center;
+    font-family:var(--serif); font-size:18rem; line-height:1;
+    color:rgba(253,250,243,.45); user-select:none;
+    transition: transform 6s ease;
+  }
+  .portrait:hover .portrait__letter{ transform:scale(1.06) rotate(-2deg); }
+  .portrait__caption{
+    position:absolute; left:1.2rem; right:1.2rem; bottom:1.2rem;
+    background:rgba(253,250,243,.85); backdrop-filter:blur(10px);
+    border-radius:1rem; padding:1.1rem 1.3rem;
+    border:1px solid rgba(255,255,255,.6);
+  }
+  .portrait__caption .label{ font-size:.7rem; letter-spacing:.25em; text-transform:uppercase; color:var(--ink-3); }
+  .portrait__caption .value{ font-family:var(--serif); font-size:1.15rem; color:var(--ink); margin-top:.25rem; line-height:1.3; }
+  .portrait__tag{
+    position:absolute; top:1.2rem; left:1.2rem;
+    background:var(--paper); border-radius:999px; padding:.5rem 1rem;
+    font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-2);
+    border:1px solid var(--line-soft);
+  }
+  .portrait__tag .green-dot{ display:inline-block; width:8px; height:8px; border-radius:50%; background:#4a8a4a; margin-right:.5rem; vertical-align:middle; animation:pulse 2.4s ease-in-out infinite; }
+
+  .hero__stats{
+    margin-top:3rem; display:grid; grid-template-columns: repeat(3, minmax(0,1fr));
+    gap:1.5rem; max-width:34rem;
+    border-top:1px solid var(--line); padding-top:2rem;
+    opacity:0; transform:translateY(18px); transition:opacity .9s 1s, transform .9s 1s;
+  }
+  .hero.loaded .hero__stats{ opacity:1; transform:translateY(0); }
+  .stat__num{ font-family:var(--serif); font-size:2.4rem; line-height:1; color:var(--ink); }
+  .stat__lbl{ margin-top:.4rem; font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-3); line-height:1.4; }
+
+  /* ============================================================
+     MARQUEE STRIP
+     ============================================================ */
+  .marquee{
+    background:var(--bg-deep); color:var(--bg);
+    padding-block:1.6rem;
+    overflow:hidden; border-block:1px solid var(--bg-deep);
+  }
+  .marquee__track{
+    display:flex; gap:4rem; white-space:nowrap;
+    animation: scroll 40s linear infinite;
+    width:max-content;
+  }
+  .marquee__track:hover{ animation-play-state: paused; }
+  .marquee span{ font-family:var(--serif); font-size:1.6rem; font-style:italic; font-weight:400; }
+  .marquee .dot{ color:var(--accent-2); font-style:normal; }
+  @keyframes scroll{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* ============================================================
+     SECTION HEADER
+     ============================================================ */
+  .sec-head{ max-width:38rem; margin-bottom:4rem; }
+  .sec-head__eyebrow{
+    font-size:.72rem; letter-spacing:.3em; text-transform:uppercase; color:var(--accent);
+    display:inline-flex; align-items:center; gap:.7rem;
+  }
+  .sec-head__eyebrow::before{
+    content:''; display:inline-block; width:32px; height:1px; background:var(--accent);
+  }
+  .sec-head__title{
+    margin-top:1.25rem;
+    font-family:var(--serif); font-weight:500;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1.05; letter-spacing:-.02em; color:var(--ink);
+  }
+  .sec-head__title em{ font-style:italic; color:var(--accent); }
+  .sec-head__desc{
+    margin-top:1.2rem; font-family:var(--serif); font-style:italic;
+    font-size:1.15rem; color:var(--ink-2); line-height:1.55;
+  }
+
+  /* ============================================================
+     ABOUT
+     ============================================================ */
+  .about{ background:var(--paper); }
+  .about__grid{
+    display:grid; grid-template-columns: 1fr; gap:3rem;
+  }
+  @media(min-width:980px){ .about__grid{ grid-template-columns: 7fr 5fr; gap:5rem; } }
+  .about__body p{
+    font-family:var(--serif); font-size:1.15rem; line-height:1.7; color:var(--ink-2); margin-bottom:1.4rem;
+  }
+  .about__body p:first-child::first-letter{
+    font-family:var(--serif); font-size:4.5rem; line-height:.9; float:left;
+    padding:.4rem .7rem 0 0; color:var(--accent); font-weight:500;
+  }
+  .pullquote{
+    border-left:2px solid var(--accent);
+    padding:1.25rem 0 1.25rem 1.5rem; margin-block:2rem;
+    font-family:var(--serif); font-style:italic; font-size:1.4rem; color:var(--ink); line-height:1.45;
+  }
+  .about__aside{ display:flex; flex-direction:column; gap:2rem; }
+  .card{
+    background:var(--bg); border:1px solid var(--line-soft);
+    border-radius:1.25rem; padding:1.75rem;
+    transition: transform .35s ease, box-shadow .35s ease, border-color .35s;
+  }
+  .card:hover{ transform:translateY(-3px); box-shadow:0 20px 40px -24px rgba(26,22,18,.2); border-color:var(--line); }
+  .card__label{
+    font-size:.72rem; letter-spacing:.25em; text-transform:uppercase; color:var(--accent);
+  }
+  .card__title{ margin-top:.5rem; font-family:var(--serif); font-size:1.35rem; color:var(--ink); }
+  .interests{ list-style:none; margin-top:1rem; }
+  .interests li{
+    padding:.7rem 0; border-bottom:1px solid var(--line-soft);
+    font-size:.95rem; color:var(--ink-2); display:flex; align-items:center; gap:.8rem;
+  }
+  .interests li:last-child{ border:0; }
+  .interests li::before{
+    content:'✦'; color:var(--accent); font-size:.85rem;
+  }
+
+  /* ============================================================
+     EDUCATION
+     ============================================================ */
+  .edu{ background:var(--bg); }
+  .edu__grid{ display:grid; gap:1.5rem; grid-template-columns: 1fr; }
+  @media(min-width:780px){ .edu__grid{ grid-template-columns: 1fr 1fr; } }
+  .edu__card{
+    background:var(--paper); border:1px solid var(--line-soft);
+    border-radius:1.5rem; padding:2.25rem;
+    display:flex; flex-direction:column; gap:1.25rem;
+    transition: transform .35s, box-shadow .35s, border-color .35s;
+    position:relative; overflow:hidden;
+  }
+  .edu__card::before{
+    content:''; position:absolute; top:0; left:0; right:0; height:3px;
+    background:linear-gradient(90deg, var(--accent), var(--accent-2));
+    transform:scaleX(0); transform-origin:left; transition:transform .5s ease;
+  }
+  .edu__card:hover{ transform:translateY(-4px); box-shadow:0 25px 50px -28px rgba(26,22,18,.22); border-color:var(--line); }
+  .edu__card:hover::before{ transform:scaleX(1); }
+  .edu__period{
+    font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-3);
+  }
+  .edu__school{ font-family:var(--serif); font-size:1.65rem; color:var(--ink); line-height:1.15; }
+  .edu__location{ font-size:.85rem; color:var(--ink-3); }
+  .edu__degree{ font-weight:500; color:var(--ink); }
+  .chips{ display:flex; flex-wrap:wrap; gap:.5rem; }
+  .chip{
+    font-size:.78rem; padding:.4rem .85rem; border-radius:999px;
+    background:var(--bg); border:1px solid var(--line-soft); color:var(--ink-2);
+    transition:background .2s, border-color .2s, color .2s;
+  }
+  .chip:hover{ background:var(--ink); border-color:var(--ink); color:var(--bg); }
+  .chip--accent{ background:rgba(139,44,44,.08); border-color:rgba(139,44,44,.2); color:var(--accent); }
+
+  /* ============================================================
+     SKILLS
+     ============================================================ */
+  .skills{ background:var(--paper); }
+  .skills__grid{ display:grid; gap:1.5rem; grid-template-columns:1fr; }
+  @media(min-width:780px){ .skills__grid{ grid-template-columns: repeat(3, 1fr); } }
+  .skills__card{
+    background:var(--bg); border:1px solid var(--line-soft);
+    border-radius:1.25rem; padding:2rem;
+  }
+  .skills__card h3{
+    font-family:var(--serif); font-weight:500; font-size:1.4rem;
+    color:var(--ink); margin-bottom:1.25rem;
+    padding-bottom:.85rem; border-bottom:1px solid var(--line-soft);
+    display:flex; justify-content:space-between; align-items:baseline;
+  }
+  .skills__card h3 span{ font-size:.7rem; letter-spacing:.25em; text-transform:uppercase; font-family:var(--sans); color:var(--ink-3); font-weight:500; }
+
+  .langs{ margin-top:3rem; display:grid; gap:1rem; grid-template-columns:1fr; }
+  @media(min-width:780px){ .langs{ grid-template-columns: repeat(3,1fr); } }
+  .lang{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:1.4rem 1.6rem; border:1px solid var(--line-soft);
+    border-radius:1rem; background:var(--bg);
+  }
+  .lang strong{ font-family:var(--serif); font-size:1.3rem; font-weight:500; color:var(--ink); }
+  .lang span{ font-size:.78rem; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); }
+
+  /* ============================================================
+     PROJECTS
+     ============================================================ */
+  .projects{ background:var(--bg); }
+  .project{
+    display:grid; grid-template-columns:1fr; gap:2rem;
+    padding-block:3rem; border-bottom:1px solid var(--line);
+    align-items:start;
+  }
+  .project:last-child{ border-bottom:0; }
+  @media(min-width:980px){ .project{ grid-template-columns: 1fr 2fr; gap:5rem; } }
+
+  .project__num{
+    font-family:var(--serif); font-size:1rem; color:var(--ink-3);
+    letter-spacing:.05em; padding-top:.5rem;
+    display:flex; align-items:center; gap:1rem;
+  }
+  .project__num::after{ content:''; flex:1; height:1px; background:var(--line); display:none; }
+  @media(min-width:980px){ .project__num::after{ display:block; } }
+
+  .project__body h3{
+    font-family:var(--serif); font-weight:500;
+    font-size: clamp(1.7rem, 3.2vw, 2.6rem); line-height:1.1; letter-spacing:-.015em;
+    color:var(--ink); margin-bottom:1rem; transition:color .3s;
+  }
+  .project:hover .project__body h3{ color:var(--accent); }
+  .project__desc{ font-size:1.02rem; color:var(--ink-2); line-height:1.7; max-width:42rem; }
+  .project__out{ margin-top:1.5rem; list-style:none; display:flex; flex-direction:column; gap:.6rem; }
+  .project__out li{ display:flex; gap:.8rem; align-items:flex-start; color:var(--ink-2); font-size:.95rem; }
+  .project__out li::before{
+    content:''; flex:0 0 auto; margin-top:.6rem;
+    width:18px; height:1px; background:var(--accent);
+  }
+  .project__tools{ margin-top:1.8rem; display:flex; flex-wrap:wrap; gap:.5rem; }
+
+  /* ============================================================
+     EXPERIENCE
+     ============================================================ */
+  .exp{ background:var(--paper); }
+  .timeline{ position:relative; padding-left:0; }
+  @media(min-width:780px){ .timeline{ padding-left:8rem; } }
+  .timeline::before{
+    content:''; position:absolute; left:0; top:0; bottom:0; width:1px; background:var(--line); display:none;
+  }
+  @media(min-width:780px){ .timeline::before{ display:block; left:6rem; } }
+
+  .exp__item{ position:relative; padding-block:2.5rem; border-bottom:1px solid var(--line-soft); }
+  .exp__item:last-child{ border-bottom:0; }
+  .exp__item::before{
+    content:''; position:absolute; left:-8rem; top:3.1rem;
+    width:11px; height:11px; border-radius:50%; background:var(--bg); border:2px solid var(--accent);
+    display:none;
+  }
+  @media(min-width:780px){ .exp__item::before{ display:block; left:-2.6rem; } }
+  .exp__year{
+    position:absolute; left:-8rem; top:2.7rem; width:6rem;
+    font-family:var(--serif); font-size:1.1rem; color:var(--ink-3); font-style:italic;
+    display:none;
+  }
+  @media(min-width:780px){ .exp__year{ display:block; } }
+  .exp__head{ display:flex; justify-content:space-between; align-items:baseline; gap:1rem; flex-wrap:wrap; }
+  .exp__role{ font-family:var(--serif); font-weight:500; font-size: clamp(1.5rem, 2.6vw, 2rem); line-height:1.15; color:var(--ink); }
+  .exp__period-m{ font-size:.78rem; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); }
+  @media(min-width:780px){ .exp__period-m{ display:none; } }
+  .exp__company{ margin-top:.4rem; color:var(--ink-2); font-size:.95rem; }
+  .exp__company strong{ color:var(--ink); font-weight:500; }
+  .exp__summary{ margin-top:1.2rem; color:var(--ink-2); font-style:italic; font-family:var(--serif); font-size:1.1rem; max-width:42rem; line-height:1.55; }
+  .exp__bullets{ margin-top:1.4rem; list-style:none; display:flex; flex-direction:column; gap:.7rem; }
+  .exp__bullets li{ display:flex; gap:.9rem; color:var(--ink-2); font-size:.95rem; line-height:1.6; max-width:42rem; }
+  .exp__bullets li::before{ content:''; margin-top:.65rem; width:14px; height:1px; background:var(--accent); flex:0 0 auto; }
+
+  /* ============================================================
+     AWARDS
+     ============================================================ */
+  .awards{ background:var(--bg); }
+  .awards__list{ display:grid; gap:0; }
+  .award{
+    display:grid; grid-template-columns:auto 1fr auto; gap:1.5rem;
+    align-items:start; padding:2rem 0;
+    border-top:1px solid var(--line);
+    transition: padding .3s ease;
+  }
+  .award:last-child{ border-bottom:1px solid var(--line); }
+  .award:hover{ padding-inline:1rem; }
+  .award__year{
+    font-family:var(--serif); font-style:italic; font-size:1.2rem; color:var(--ink-3); min-width:3rem;
+  }
+  .award__body h3{
+    font-family:var(--serif); font-weight:500; font-size: clamp(1.3rem, 2.2vw, 1.7rem); color:var(--ink); line-height:1.2;
+    transition: color .25s;
+  }
+  .award:hover .award__body h3{ color:var(--accent); }
+  .award__issuer{ margin-top:.2rem; font-size:.85rem; color:var(--ink-3); letter-spacing:.05em; }
+  .award__desc{ margin-top:.8rem; color:var(--ink-2); max-width:48rem; }
+  .award__arrow{ align-self:center; color:var(--ink-3); transition:transform .3s, color .3s; }
+  .award:hover .award__arrow{ transform:translate(4px,-4px); color:var(--accent); }
+
+  /* ============================================================
+     CONTACT
+     ============================================================ */
+  .contact{
+    background:var(--bg-deep); color:var(--bg);
+    position:relative; overflow:hidden;
+  }
+  .contact::before{
+    content:''; position:absolute; inset:0;
+    background:
+      radial-gradient(600px 400px at 80% 20%, rgba(139,44,44,.18), transparent 60%),
+      radial-gradient(600px 500px at 0% 100%, rgba(177,74,58,.12), transparent 60%);
+    pointer-events:none;
+  }
+  .contact .wrap{ position:relative; z-index:1; }
+  .contact__head{
+    font-family:var(--serif); font-weight:500;
+    font-size: clamp(2.5rem, 7vw, 5.5rem); line-height:1; letter-spacing:-.025em;
+    color:var(--bg);
+  }
+  .contact__head em{ font-style:italic; color:var(--accent-2); }
+  .contact__sub{ margin-top:1.5rem; max-width:34rem; color:rgba(241,235,224,.7); font-size:1.1rem; line-height:1.6; }
+
+  .contact__grid{ margin-top:4rem; display:grid; grid-template-columns:1fr; gap:3rem; }
+  @media(min-width:980px){ .contact__grid{ grid-template-columns: 5fr 7fr; gap:5rem; } }
+
+  .channels{ list-style:none; display:flex; flex-direction:column; gap:1.6rem; }
+  .channel{ display:flex; gap:1.2rem; align-items:flex-start; }
+  .channel__icon{
+    flex:0 0 auto; width:44px; height:44px; border-radius:50%;
+    background:rgba(241,235,224,.06); border:1px solid rgba(241,235,224,.12);
+    display:grid; place-items:center; color:var(--accent-2);
+    transition: background .25s, border-color .25s;
+  }
+  .channel:hover .channel__icon{ background:rgba(177,74,58,.15); border-color:var(--accent-2); }
+  .channel__label{ font-size:.72rem; letter-spacing:.25em; text-transform:uppercase; color:rgba(241,235,224,.5); }
+  .channel__value{ margin-top:.2rem; color:var(--bg); font-size:1.05rem; }
+  .channel__value a{ position:relative; display:inline-block; }
+  .channel__value a::after{
+    content:''; position:absolute; left:0; right:0; bottom:-3px; height:1px; background:var(--accent-2);
+    transform:scaleX(0); transform-origin:left; transition:transform .35s;
+  }
+  .channel__value a:hover::after{ transform:scaleX(1); }
+
+  .socials{ margin-top:2.5rem; display:flex; gap:.7rem; }
+  .social{
+    width:44px; height:44px; border-radius:50%;
+    border:1px solid rgba(241,235,224,.2); display:grid; place-items:center;
+    transition: background .25s, color .25s, border-color .25s, transform .25s;
+  }
+  .social:hover{ background:var(--accent); color:var(--bg); border-color:var(--accent); transform:translateY(-2px); }
+
+  .form{ background:var(--paper); color:var(--ink); border-radius:1.5rem; padding:2.5rem; display:flex; flex-direction:column; gap:1.2rem; }
+  .field label{ display:block; font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-3); margin-bottom:.5rem; font-weight:500; }
+  .field label em{ color:var(--accent); font-style:normal; }
+  .field input, .field textarea{
+    width:100%; padding:.95rem 1.1rem; border-radius:.9rem;
+    background:var(--bg); border:1px solid var(--line-soft); color:var(--ink);
+    font:inherit; transition: border-color .2s, box-shadow .2s, background .2s;
+  }
+  .field input::placeholder, .field textarea::placeholder{ color:var(--ink-3); }
+  .field input:focus, .field textarea:focus{
+    outline:none; border-color:var(--accent);
+    background:var(--paper);
+    box-shadow:0 0 0 4px rgba(139,44,44,.1);
+  }
+  .field textarea{ resize:vertical; min-height:140px; }
+  .form__foot{ display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; padding-top:.5rem; }
+  .form__note{ font-size:.72rem; letter-spacing:.05em; color:var(--ink-3); max-width:18rem; }
+
+  /* ============================================================
+     FOOTER
+     ============================================================ */
+  .footer{ background:var(--bg-deep); color:rgba(241,235,224,.5); padding-block:3rem 2rem; border-top:1px solid rgba(241,235,224,.08); }
+  .footer__inner{ display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; font-size:.78rem; letter-spacing:.05em; }
+  .footer .brand{ color:var(--bg); }
+  .footer .brand__mark{ background:var(--bg); color:var(--bg-deep); }
+  .scroll-top{
+    display:inline-flex; align-items:center; gap:.5rem;
+    font-size:.72rem; letter-spacing:.22em; text-transform:uppercase;
+    color:rgba(241,235,224,.7); transition:color .25s;
+  }
+  .scroll-top:hover{ color:var(--accent-2); }
+
+  /* ============================================================
+     REVEAL ANIMATIONS
+     ============================================================ */
+  .reveal{ opacity:0; transform:translateY(28px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
+  .reveal.is-in{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){
+    .reveal, .reveal.is-in{ opacity:1 !important; transform:none !important; transition:none !important; }
+    .hero__title .word > span, .hero__rule, .hero__lede, .hero__ctas, .hero__side, .hero__stats{ opacity:1 !important; transform:none !important; }
+    .marquee__track{ animation:none !important; }
+  }
+
+  /* ============================================================
+     UTILS
+     ============================================================ */
+  .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+</style>
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor-dot"  id="cursorDot"></div>
+
+<!-- ============================================================
+     NAV
+============================================================ -->
+<header class="nav" id="nav">
+  <div class="wrap nav__inner">
+    <a href="#home" class="brand" data-magnetic>
+      <span class="brand__mark">G</span>
+      <span>Gema R.</span>
+    </a>
+    <nav>
+      <ul class="nav__links">
+        <li><a href="#about"          class="nav__link">About</a></li>
+        <li><a href="#education"      class="nav__link">Education</a></li>
+        <li><a href="#skills"         class="nav__link">Skills</a></li>
+        <li><a href="#projects"       class="nav__link">Projects</a></li>
+        <li><a href="#experience"     class="nav__link">Experience</a></li>
+        <li><a href="#awards"         class="nav__link">Awards</a></li>
+      </ul>
+    </nav>
+    <a href="#contact" class="nav__cta" data-magnetic>Let’s talk</a>
+    <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer__top">
+    <span class="brand"><span class="brand__mark">G</span> Gema R.</span>
+    <button class="drawer__close" id="drawerClose" aria-label="Close menu">✕</button>
+  </div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <p class="drawer__foot">Madrid · 2026</p>
+</div>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<main>
+<section class="hero" id="home">
+  <div class="wrap hero__grid">
+    <div>
+      <span class="hero__eyebrow"><span class="dot"></span> Madrid · Strategic Marketing & Communication</span>
+      <h1 class="hero__title">
+        <span class="word"><span>Hi,</span></span>
+        <span class="word"><span>I’m</span></span>
+        <span class="word"><span class="italic">Gema.</span></span>
+        <br/>
+        <span class="word"><span>Brand storyteller.</span></span>
+      </h1>
+
+      <div class="hero__rule"></div>
+
+      <p class="hero__lede">
+        Seven years across media, FMCG, and retail — turning consumer insight into campaigns that earn attention rather than demand it. Currently sharpening the craft at IE Business School.
+      </p>
+
+      <div class="hero__ctas">
+        <a href="#projects" class="btn btn--primary">View Projects <span class="arrow">→</span></a>
+        <!-- CV download: PDF lives next to this file -->
+        <a href="GemaRodriguez_CV_English.pdf" download class="btn btn--ghost">Download CV ↓</a>
+        <a href="#contact" class="btn btn--link">Get in touch →</a>
+      </div>
+
+      <dl class="hero__stats">
+        <div><dt class="sr-only">Years of experience</dt><dd class="stat__num">7</dd><p class="stat__lbl">Years across<br/>media & retail</p></div>
+        <div><dt class="sr-only">Countries</dt><dd class="stat__num">2</dd><p class="stat__lbl">Countries<br/>lived & worked</p></div>
+        <div><dt class="sr-only">Languages</dt><dd class="stat__num">3</dd><p class="stat__lbl">Languages<br/>ES · EN · FR</p></div>
+      </dl>
+    </div>
+
+    <aside class="hero__side">
+      <figure class="portrait">
+        <!-- To use a real photo, replace .portrait__letter with: <img src="portrait.jpg" alt="Gema Rodriguez Beltran"> -->
+        <span class="portrait__tag"><span class="green-dot"></span>Available 2026</span>
+        <span class="portrait__letter">G</span>
+        <figcaption class="portrait__caption">
+          <p class="label">Currently</p>
+          <p class="value">Master in Strategic Marketing & Communication, <em>IE Business School</em></p>
+        </figcaption>
+      </figure>
+    </aside>
+  </div>
+</section>
+
+<!-- ============================================================
+     MARQUEE STRIP
+============================================================ -->
+<section class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>Brand Strategy <span class="dot">·</span></span>
+    <span>Consumer Insight <span class="dot">·</span></span>
+    <span>Media Planning <span class="dot">·</span></span>
+    <span>Sustainability <span class="dot">·</span></span>
+    <span>Storytelling <span class="dot">·</span></span>
+    <span>Customer Experience <span class="dot">·</span></span>
+    <span>Marketing Analytics <span class="dot">·</span></span>
+    <!-- duplicate for seamless loop -->
+    <span>Brand Strategy <span class="dot">·</span></span>
+    <span>Consumer Insight <span class="dot">·</span></span>
+    <span>Media Planning <span class="dot">·</span></span>
+    <span>Sustainability <span class="dot">·</span></span>
+    <span>Storytelling <span class="dot">·</span></span>
+    <span>Customer Experience <span class="dot">·</span></span>
+    <span>Marketing Analytics <span class="dot">·</span></span>
+  </div>
+</section>
+
+<!-- ============================================================
+     ABOUT
+============================================================ -->
+<section class="section about" id="about">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-head__eyebrow">About</span>
+      <h2 class="sec-head__title">A strategist with a <em>creative compass.</em></h2>
+      <p class="sec-head__desc">From Madrid to Dublin and back — seven years observing how brands earn trust, and how strategy translates into measurable outcomes.</p>
+    </div>
+
+    <div class="about__grid">
+      <div class="about__body reveal">
+        <p>I am a Madrid-based marketing graduate with seven years of international experience spanning media, FMCG, and retail. My career has been shaped by curiosity — for how brands earn attention, how audiences shift, and how strategy translates into real-world results.</p>
+
+        <p class="pullquote">“Great marketing earns trust rather than demands it — and trust is built on data, empathy, and a story worth listening to.”</p>
+
+        <p>I graduated with First Class Honours in Advertising & Marketing Communications from TU Dublin and was a finalist in the President’s Sustainability Innovation Challenge. I’m now deepening that foundation with a Master in Strategic Marketing & Communication at IE Business School — and looking for the next opportunity to put it into practice.</p>
+      </div>
+
+      <div class="about__aside reveal">
+        <div class="card">
+          <span class="card__label">Career Goals</span>
+          <h3 class="card__title">What I’m looking for</h3>
+          <p style="margin-top:.8rem; color:var(--ink-2); font-size:.98rem; line-height:1.6;">
+            Open to internships and graduate roles in strategy, brand, or insights — particularly within agencies and consumer brands building meaningful customer relationships across markets.
+          </p>
+        </div>
+        <div class="card">
+          <span class="card__label">Interests</span>
+          <ul class="interests">
+            <li>Customer experience & journey design</li>
+            <li>Data-driven brand storytelling</li>
+            <li>Sustainability & purpose-driven marketing</li>
+            <li>Consumer behaviour & insights</li>
+            <li>Cross-cultural campaign strategy</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     EDUCATION
+============================================================ -->
+<section class="section edu" id="education">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-head__eyebrow">Education</span>
+      <h2 class="sec-head__title">Two business schools, <em>one through-line.</em></h2>
+      <p class="sec-head__desc">A curriculum spanning strategy, analytics, and consumer insight — earned in two of Europe’s leading marketing programmes.</p>
+    </div>
+
+    <div class="edu__grid">
+      <article class="edu__card reveal">
+        <p class="edu__period">Sep 2025 — Jul 2026 (Expected)</p>
+        <h3 class="edu__school">IE Business School</h3>
+        <p class="edu__location">Madrid, Spain</p>
+        <p class="edu__degree">Master in Strategic Marketing & Communication</p>
+        <div class="chips">
+          <span class="chip">Digital Marketing Strategy</span>
+          <span class="chip">Consumer Behaviour</span>
+          <span class="chip">Brand Management</span>
+          <span class="chip">Marketing Analytics</span>
+          <span class="chip">Innovation & Entrepreneurship</span>
+          <span class="chip">Customer Experience Management</span>
+        </div>
+      </article>
+
+      <article class="edu__card reveal">
+        <p class="edu__period">Graduated June 2025</p>
+        <h3 class="edu__school">Technological University Dublin</h3>
+        <p class="edu__location">Dublin, Ireland</p>
+        <p class="edu__degree">BA in Advertising & Marketing Communications</p>
+        <div class="chips">
+          <span class="chip chip--accent">★ First Class Honours</span>
+          <span class="chip chip--accent">Sustainability Challenge Finalist</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SKILLS
+============================================================ -->
+<section class="section skills" id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-head__eyebrow">Skills</span>
+      <h2 class="sec-head__title">A toolkit for <em>strategy and storytelling.</em></h2>
+      <p class="sec-head__desc">From data platforms to creative software — the skill set behind campaigns that perform and brands that mean something.</p>
+    </div>
+
+    <div class="skills__grid">
+      <div class="skills__card reveal">
+        <h3>Technical <span>01</span></h3>
+        <div class="chips">
+          <span class="chip">Digital Marketing Strategy</span>
+          <span class="chip">Marketing Analytics</span>
+          <span class="chip">Consumer Insights</span>
+          <span class="chip">Media Planning</span>
+          <span class="chip">Competitive Analysis</span>
+          <span class="chip">Campaign Targeting</span>
+          <span class="chip">Brand Management</span>
+          <span class="chip">SEO & Social</span>
+        </div>
+      </div>
+
+      <div class="skills__card reveal">
+        <h3>Tools <span>02</span></h3>
+        <div class="chips">
+          <span class="chip">Nielsen</span>
+          <span class="chip">Kantar Media</span>
+          <span class="chip">Google Analytics</span>
+          <span class="chip">Adobe Illustrator</span>
+          <span class="chip">Adobe InDesign</span>
+          <span class="chip">Premiere Pro</span>
+          <span class="chip">Adobe Audition</span>
+          <span class="chip">MS Office</span>
+        </div>
+      </div>
+
+      <div class="skills__card reveal">
+        <h3>Soft Skills <span>03</span></h3>
+        <div class="chips">
+          <span class="chip">Strategic Thinking</span>
+          <span class="chip">Cross-cultural Collaboration</span>
+          <span class="chip">Creative Problem-Solving</span>
+          <span class="chip">Storytelling</span>
+          <span class="chip">Leadership</span>
+          <span class="chip">Attention to Detail</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="langs reveal">
+      <div class="lang"><strong>Spanish</strong><span>Native</span></div>
+      <div class="lang"><strong>English</strong><span>Bilingual</span></div>
+      <div class="lang"><strong>French</strong><span>Elementary</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROJECTS
+============================================================ -->
+<section class="section projects" id="projects">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-head__eyebrow">Selected Projects</span>
+      <h2 class="sec-head__title">Work I’m <em>proud of.</em></h2>
+      <p class="sec-head__desc">A mix of academic, agency, and personal projects. Each entry shows the tools used and the outcomes delivered.</p>
+    </div>
+
+    <article class="project reveal">
+      <div class="project__num">01 — Strategy</div>
+      <div class="project__body">
+        <h3>Green Energy Brand Positioning</h3>
+        <p class="project__desc">Competitive analysis of green-energy marketing strategies for an OMD client. Mapped competitor narratives, audience cues, and channel mix to inform a long-term strategic plan.</p>
+        <ul class="project__out">
+          <li>Insights adopted into the client’s long-term roadmap</li>
+          <li>Three new strategic directions presented to senior planners</li>
+        </ul>
+        <div class="project__tools chips">
+          <span class="chip">Nielsen</span>
+          <span class="chip">Kantar</span>
+          <span class="chip">Competitive Analysis</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="project reveal">
+      <div class="project__num">02 — Sustainability</div>
+      <div class="project__body">
+        <h3>Sustainability Innovation Challenge</h3>
+        <p class="project__desc">Finalist project in the TU Dublin President’s Sustainability Innovation Challenge — a campaign concept connecting Gen Z behaviour with circular-economy brands.</p>
+        <ul class="project__out">
+          <li>Selected as a university finalist</li>
+          <li>Presented to academic jury & industry mentors</li>
+        </ul>
+        <div class="project__tools chips">
+          <span class="chip">Brand Strategy</span>
+          <span class="chip">Consumer Research</span>
+          <span class="chip">Concept Design</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="project reveal">
+      <div class="project__num">03 — Insights</div>
+      <div class="project__body">
+        <h3>Audience Behaviour Study — Media Planning</h3>
+        <p class="project__desc">Analysed target audience behaviours using Nielsen and Kantar Media datasets to improve targeting accuracy for live media campaigns at OMD.</p>
+        <ul class="project__out">
+          <li>Improved campaign targeting accuracy</li>
+          <li>Findings adopted in active media plans</li>
+        </ul>
+        <div class="project__tools chips">
+          <span class="chip">Nielsen</span>
+          <span class="chip">Kantar Media</span>
+          <span class="chip">Audience Segmentation</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="project reveal">
+      <div class="project__num">04 — Retail</div>
+      <div class="project__body">
+        <h3>Visual Merchandising Redesign — Sprinter</h3>
+        <p class="project__desc">Reimagined in-store visual merchandising for a leading sports retailer to lift product visibility and customer engagement on the shop floor.</p>
+        <ul class="project__out">
+          <li>+10% in-store sales performance</li>
+          <li>Trained 5 new employees on the new display system</li>
+        </ul>
+        <div class="project__tools chips">
+          <span class="chip">Visual Merchandising</span>
+          <span class="chip">Retail Strategy</span>
+          <span class="chip">Team Training</span>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============================================================
+     EXPERIENCE
+============================================================ -->
+<section class="section exp" id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-head__eyebrow">Experience</span>
+      <h2 class="sec-head__title">Where I’ve worked, <em>what I’ve learned.</em></h2>
+      <p class="sec-head__desc">A track record across media planning, retail, and FMCG — earning skills in strategy, execution, and team collaboration.</p>
+    </div>
+
+    <div class="timeline">
+
+      <article class="exp__item reveal">
+        <span class="exp__year">2025</span>
+        <div class="exp__head">
+          <h3 class="exp__role">Planning Intern</h3>
+          <span class="exp__period-m">Jan 2025</span>
+        </div>
+        <p class="exp__company"><strong>OMD — Omnicom Media Group</strong> · Dublin, Ireland</p>
+        <p class="exp__summary">Global media communications agency. Supported the strategic planning team across competitive analysis, audience research, and creative brainstorms.</p>
+        <ul class="exp__bullets">
+          <li>Conducted competitive analysis on green-energy marketing strategies that informed a client’s long-term plan.</li>
+          <li>Researched 20 innovative campaigns; 3 recommendations adopted by the internal team.</li>
+          <li>Leveraged Nielsen and Kantar Media to analyse audience behaviour and improve targeting accuracy.</li>
+          <li>Contributed creative input adopted by a team of 10 senior planners.</li>
+        </ul>
+      </article>
+
+      <article class="exp__item reveal">
+        <span class="exp__year">2022</span>
+        <div class="exp__head">
+          <h3 class="exp__role">Retail Specialist</h3>
+          <span class="exp__period-m">Jun — Sep 2022</span>
+        </div>
+        <p class="exp__company"><strong>Sprinter</strong> · Las Rozas de Madrid, Spain</p>
+        <p class="exp__summary">Sports retail company specialising in footwear, apparel, and accessories.</p>
+        <ul class="exp__bullets">
+          <li>Trained 5 new employees, improving in-store sales performance by 10%.</li>
+          <li>Redesigned visual merchandising displays, increasing product visibility and engagement.</li>
+        </ul>
+      </article>
+
+      <article class="exp__item reveal">
+        <span class="exp__year">2020</span>
+        <div class="exp__head">
+          <h3 class="exp__role">Retail Specialist</h3>
+          <span class="exp__period-m">May 2020 — May 2021</span>
+        </div>
+        <p class="exp__company"><strong>SuperValu</strong> · Dublin, Ireland</p>
+        <p class="exp__summary">Ireland’s largest grocery and food distributor with 223 stores nationwide.</p>
+        <ul class="exp__bullets">
+          <li>Supervised home delivery operations during COVID-19, handling up to 30 deliveries per shift with 100% customer satisfaction.</li>
+          <li>Maintained 100% compliance with ID-verification policies in the off-license section.</li>
+        </ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     AWARDS
+============================================================ -->
+<section class="section awards" id="awards">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-head__eyebrow">Awards & Recognition</span>
+      <h2 class="sec-head__title">Moments that <em>mark the journey.</em></h2>
+      <p class="sec-head__desc">Academic distinctions, competitions, and recognitions earned across the years.</p>
+    </div>
+
+    <div class="awards__list">
+
+      <div class="award reveal">
+        <p class="award__year">2025</p>
+        <div class="award__body">
+          <h3>First Class Honours</h3>
+          <p class="award__issuer">Technological University Dublin</p>
+          <p class="award__desc">Top academic distinction in the BA in Advertising & Marketing Communications.</p>
+        </div>
+        <span class="award__arrow">↗</span>
+      </div>
+
+      <div class="award reveal">
+        <p class="award__year">2025</p>
+        <div class="award__body">
+          <h3>Sustainability Innovation Challenge — Finalist</h3>
+          <p class="award__issuer">TU Dublin President’s Office</p>
+          <p class="award__desc">Recognised for a campaign concept in sustainability-driven brand innovation.</p>
+        </div>
+        <span class="award__arrow">↗</span>
+      </div>
+
+      <div class="award reveal">
+        <p class="award__year">—</p>
+        <div class="award__body">
+          <h3>Award for Musical Excellence</h3>
+          <p class="award__issuer">Community of Madrid</p>
+          <p class="award__desc">Presented by the regional president for excellence in musical performance.</p>
+        </div>
+        <span class="award__arrow">↗</span>
+      </div>
+
+      <div class="award reveal">
+        <p class="award__year">—</p>
+        <div class="award__body">
+          <h3>Brown Belt in Karate</h3>
+          <p class="award__issuer">Madrid Karate Federation</p>
+          <p class="award__desc">Long-term commitment, discipline, and competitive practice in karate.</p>
+        </div>
+        <span class="award__arrow">↗</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT
+============================================================ -->
+<section class="section contact" id="contact">
+  <div class="wrap">
+    <div class="reveal">
+      <h2 class="contact__head">Let’s build something <em>memorable.</em></h2>
+      <p class="contact__sub">Always open to internships, graduate roles, research collaborations — or a thoughtful conversation about the future of marketing.</p>
+    </div>
+
+    <div class="contact__grid">
+      <div class="reveal">
+        <ul class="channels">
+          <li class="channel">
+            <span class="channel__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            </span>
+            <div>
+              <p class="channel__label">Email</p>
+              <p class="channel__value"><a href="mailto:gemarodriguez@student.ie.edu">gemarodriguez@student.ie.edu</a></p>
+            </div>
+          </li>
+          <li class="channel">
+            <span class="channel__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+            </span>
+            <div>
+              <p class="channel__label">Phone</p>
+              <p class="channel__value">+34 606 266 915</p>
+            </div>
+          </li>
+          <li class="channel">
+            <span class="channel__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 7-8 13-8 13s-8-6-8-13a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <div>
+              <p class="channel__label">Based in</p>
+              <p class="channel__value">Madrid, Spain</p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="socials">
+          <a class="social" href="https://www.linkedin.com/in/gemarodríguezbeltrán" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a class="social" href="#" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <form class="form reveal" id="contactForm">
+        <div class="field">
+          <label for="f-name">Your name <em>*</em></label>
+          <input id="f-name" name="name" type="text" required autocomplete="name" placeholder="Jane Doe" />
+        </div>
+        <div class="field">
+          <label for="f-email">Email address <em>*</em></label>
+          <input id="f-email" name="email" type="email" required autocomplete="email" placeholder="jane@example.com" />
+        </div>
+        <div class="field">
+          <label for="f-msg">Message <em>*</em></label>
+          <textarea id="f-msg" name="message" rows="5" required placeholder="Tell me about the role, project, or idea…"></textarea>
+        </div>
+        <div class="form__foot">
+          <p class="form__note">Submitting opens your email client with the message pre-filled. No data is stored.</p>
+          <button type="submit" class="btn btn--primary" id="formBtn">Send message <span class="arrow">→</span></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <span class="brand"><span class="brand__mark">G</span> Gema Rodriguez Beltran</span>
+    <span>© <span id="year"></span> · Designed & built with care.</span>
+    <a href="#home" class="scroll-top">Back to top ↑</a>
+  </div>
+</footer>
+
+<!-- ============================================================
+     SCRIPTS
+============================================================ -->
+<script>
+(() => {
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Hero load animation
+  requestAnimationFrame(() => document.querySelector('.hero').classList.add('loaded'));
+
+  // Reveal on scroll
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reveals = document.querySelectorAll('.reveal');
+  if (reduced) {
+    reveals.forEach(el => el.classList.add('is-in'));
+  } else if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => io.observe(el));
+  } else {
+    reveals.forEach(el => el.classList.add('is-in'));
+  }
+
+  // Nav: scrolled background
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('is-scrolled', window.scrollY > 32);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Nav: active section
+  const links = document.querySelectorAll('.nav__link');
+  const sections = [...links].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  if ('IntersectionObserver' in window && sections.length) {
+    const so = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const id = e.target.id;
+          links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach(s => so.observe(s));
+  }
+
+  // Mobile drawer
+  const drawer  = document.getElementById('drawer');
+  const burger  = document.getElementById('burger');
+  const closeBtn = document.getElementById('drawerClose');
+  const setDrawer = (open) => {
+    drawer.classList.toggle('open', open);
+    drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+  burger.addEventListener('click', () => setDrawer(!drawer.classList.contains('open')));
+  closeBtn.addEventListener('click', () => setDrawer(false));
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setDrawer(false)));
+
+  // Custom cursor (desktop only)
+  const dot  = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  if (dot && ring && !reduced && window.matchMedia('(hover: hover)').matches) {
+    let x = 0, y = 0, rx = 0, ry = 0;
+    window.addEventListener('mousemove', e => { x = e.clientX; y = e.clientY; dot.style.transform = `translate(${x}px, ${y}px) translate(-50%,-50%)`; });
+    const loop = () => {
+      rx += (x - rx) * 0.18;
+      ry += (y - ry) * 0.18;
+      ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%,-50%)`;
+      requestAnimationFrame(loop);
+    };
+    requestAnimationFrame(loop);
+    document.querySelectorAll('a, button, [data-magnetic]').forEach(el => {
+      el.addEventListener('mouseenter', () => ring.classList.add('hover'));
+      el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+    });
+  }
+
+  // Magnetic effect on select elements
+  if (!reduced) {
+    document.querySelectorAll('[data-magnetic]').forEach(el => {
+      el.addEventListener('mousemove', e => {
+        const r = el.getBoundingClientRect();
+        const mx = e.clientX - (r.left + r.width / 2);
+        const my = e.clientY - (r.top + r.height / 2);
+        el.style.transform = `translate(${mx * 0.15}px, ${my * 0.2}px)`;
+      });
+      el.addEventListener('mouseleave', () => { el.style.transform = ''; });
+    });
+  }
+
+  // Contact form -> mailto
+  const form = document.getElementById('contactForm');
+  const formBtn = document.getElementById('formBtn');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const name = (data.get('name') || '').toString().trim();
+    const email = (data.get('email') || '').toString().trim();
+    const msg = (data.get('message') || '').toString().trim();
+    const subject = encodeURIComponent(`Portfolio enquiry — ${name}`);
+    const body = encodeURIComponent(`${msg}\n\n— ${name}\n${email}`);
+    window.location.href = `mailto:gemarodriguez@student.ie.edu?subject=${subject}&body=${body}`;
+    formBtn.innerHTML = 'Sent ✓';
+    setTimeout(() => { formBtn.innerHTML = 'Send message <span class="arrow">→</span>'; }, 2400);
+  });
+})();
+</script>
+</body>
+</html>
