@@ -59,21 +59,6 @@
   ::selection{background:rgba(139,44,44,.18);color:var(--accent)}
 
   /* ============================================================
-     CUSTOM CURSOR
-     ============================================================ */
-  .cursor-dot, .cursor-ring{
-    position:fixed; top:0; left:0; pointer-events:none; z-index:9999;
-    border-radius:50%; transition:transform .25s ease, opacity .25s ease, background .2s, border-color .2s;
-    transform:translate(-50%,-50%);
-    will-change:transform;
-  }
-  .cursor-dot{ width:6px; height:6px; background:var(--accent); }
-  .cursor-ring{ width:38px; height:38px; border:1px solid rgba(26,22,18,.35); mix-blend-mode:multiply; }
-  .cursor-ring.hover{ width:56px; height:56px; border-color:var(--accent); background:rgba(139,44,44,.06); }
-  @media (hover: none), (max-width: 900px){ .cursor-dot, .cursor-ring{display:none} }
-  @media (prefers-reduced-motion: reduce){ .cursor-dot, .cursor-ring{display:none} }
-
-  /* ============================================================
      LAYOUT
      ============================================================ */
   .wrap{max-width:var(--max); margin-inline:auto; padding-inline:var(--pad)}
@@ -630,16 +615,12 @@
 </head>
 <body>
 
-<!-- Custom cursor -->
-<div class="cursor-ring" id="cursorRing"></div>
-<div class="cursor-dot"  id="cursorDot"></div>
-
 <!-- ============================================================
      NAV
 ============================================================ -->
 <header class="nav" id="nav">
   <div class="wrap nav__inner">
-    <a href="#home" class="brand" data-magnetic>
+    <a href="#home" class="brand">
       <span class="brand__mark">G</span>
       <span>Gema R.</span>
     </a>
@@ -653,7 +634,7 @@
         <li><a href="#awards"         class="nav__link">Awards</a></li>
       </ul>
     </nav>
-    <a href="#contact" class="nav__cta" data-magnetic>Let’s talk</a>
+    <a href="#contact" class="nav__cta">Let’s talk</a>
     <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -1240,38 +1221,6 @@
   burger.addEventListener('click', () => setDrawer(!drawer.classList.contains('open')));
   closeBtn.addEventListener('click', () => setDrawer(false));
   drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setDrawer(false)));
-
-  // Custom cursor (desktop only)
-  const dot  = document.getElementById('cursorDot');
-  const ring = document.getElementById('cursorRing');
-  if (dot && ring && !reduced && window.matchMedia('(hover: hover)').matches) {
-    let x = 0, y = 0, rx = 0, ry = 0;
-    window.addEventListener('mousemove', e => { x = e.clientX; y = e.clientY; dot.style.transform = `translate(${x}px, ${y}px) translate(-50%,-50%)`; });
-    const loop = () => {
-      rx += (x - rx) * 0.18;
-      ry += (y - ry) * 0.18;
-      ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%,-50%)`;
-      requestAnimationFrame(loop);
-    };
-    requestAnimationFrame(loop);
-    document.querySelectorAll('a, button, [data-magnetic]').forEach(el => {
-      el.addEventListener('mouseenter', () => ring.classList.add('hover'));
-      el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
-    });
-  }
-
-  // Magnetic effect on select elements
-  if (!reduced) {
-    document.querySelectorAll('[data-magnetic]').forEach(el => {
-      el.addEventListener('mousemove', e => {
-        const r = el.getBoundingClientRect();
-        const mx = e.clientX - (r.left + r.width / 2);
-        const my = e.clientY - (r.top + r.height / 2);
-        el.style.transform = `translate(${mx * 0.15}px, ${my * 0.2}px)`;
-      });
-      el.addEventListener('mouseleave', () => { el.style.transform = ''; });
-    });
-  }
 
   // Contact form -> mailto
   const form = document.getElementById('contactForm');
